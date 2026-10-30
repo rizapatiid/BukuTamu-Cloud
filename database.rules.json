@@ -1,0 +1,21 @@
+{
+  "rules": {
+    "bukutamu": {
+      ".read": true,
+      ".indexOn": ["waktu"],
+      "$id": {
+        ".write": "!data.exists()",
+        ".validate": "newData.hasChildren(['nama', 'instansi', 'keperluan', 'pesan', 'waktu'])",
+        "nama":      { ".validate": "newData.isString() && newData.val().length >= 3 && newData.val().length <= 50" },
+        "instansi":  { ".validate": "newData.isString() && newData.val().length >= 2 && newData.val().length <= 80" },
+        "email":     { ".validate": "newData.isString() && newData.val().length <= 80" },
+        "telepon":   { ".validate": "newData.isString() && newData.val().length <= 15" },
+        "keperluan": { ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 30" },
+        "bertemu":   { ".validate": "newData.isString() && newData.val().length <= 50" },
+        "pesan":     { ".validate": "newData.isString() && newData.val().length >= 3 && newData.val().length <= 500" },
+        "waktu":     { ".validate": "newData.val() === now" },
+        "$other":    { ".validate": false }
+      }
+    }
+  }
+}
